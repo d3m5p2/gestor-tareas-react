@@ -13,6 +13,7 @@ const initialForm = {
 }
 
 function App() {
+// Carga las tareas guardadas en localStorage al iniciar la aplicación
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('tasks')
     return savedTasks ? JSON.parse(savedTasks) : []
@@ -26,6 +27,7 @@ function App() {
   const [sortBy, setSortBy] = useState('createdDesc')
 
   useEffect(() => {
+// Guarda las tareas en localStorage cada vez que cambian
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
 
@@ -141,6 +143,7 @@ function App() {
     showMessage('Tarea marcada como completada')
   }
 
+// Aplica los filtros y la ordenación antes de mostrar las tareas
   function getVisibleTasks() {
     let visibleTasks = [...tasks]
 
